@@ -25,8 +25,8 @@ if (isset($_POST['submit'])) {
 //Login Form POST 
 if (isset($_POST['login'])) {
 	$data =[
-		'email'=>$_POST['username'],
-		'password'=>md5($_POST['password'])
+		'email'=>mysqli_real_escape_string($obj->con,$_POST['username']),
+		'password'=>mysqli_real_escape_string($obj->con,md5($_POST['password']))
 	];
 	$user_id = $obj->login('user_tbl',$data);
 	if(isset($user_id))
